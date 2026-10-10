@@ -1,25 +1,21 @@
 # nvim-config
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
 ![Neovim](https://img.shields.io/badge/neovim-0.12%2B-green.svg)
 ![License](https://img.shields.io/badge/license-MIT%202.0-orange.svg)
 
 A modern, modular Neovim configuration built with the native [`vim.pack`](https://neovim.io/doc/user/pack.html#vim.pack) plugin manager
 
----
-
 ## Requirements
 
 Make sure the following dependencies are installed:
 
-* [`git`](https://git-scm.com) – plugin installation
 * A terminal with true colour (24-bit / 256 colour) support
+* [`git`](https://git-scm.com) – plugin installation
 * [A Nerd Font](https://www.nerdfonts.com) - icon support
 * [`ripgrep`](https://github.com/BurntSushi/ripgrep) – fast searching
 * [`fd`](https://github.com/sharkdp/fd) – improved file finding
 * [`tree-sitter`](https://tree-sitter.github.io/tree-sitter/) CLI – syntax parsing
-
----
 
 ## Installation
 
@@ -35,12 +31,6 @@ Then launch Neovim:
 nvim
 ```
 
-On launch, `vim.pack` will automatically install the plugins defined in the `plugins` directory, at the revisions pinned in `nvim-pack-lock.json`
-
-To update plugins, run `:lua vim.pack.update()`, review the changes, then `:write` to apply them or `:quit` to discard them
-
----
-
 ## Plugins
 
 - [blink.cmp](https://github.com/saghen/blink.cmp)
@@ -48,6 +38,7 @@ To update plugins, run `:lua vim.pack.update()`, review the changes, then `:writ
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [mason.nvim](https://github.com/mason-org/mason.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
@@ -55,31 +46,10 @@ To update plugins, run `:lua vim.pack.update()`, review the changes, then `:writ
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 
----
-
-## Language servers
-
-Individual language servers are not installed by default, but are defined in `lsp.lua` and enabled automatically when the executable is present on the `PATH`.
-
-For example -
-
-```bash
-# Go
-go install golang.org/x/tools/gopls@latest
-go install github.com/nametake/golangci-lint-langserver@latest
-
-# JSON, YAML, PHP, Perl
-npm install -g vscode-langservers-extracted yaml-language-server intelephense perlnavigator-server
-```
-
----
-
 ## Local config
 
-Settings that should only be applied locally (i.e. server paths, project include paths, extra servers) go in `lua/config/local.lua`.
+Settings that should only be applied locally (i.e. server paths, project include paths, extra LSPs) go in `lua/config/local.lua`.
 An example copy is provided as `lua/config/local.example.lua`.
-
----
 
 ## Customisation
 
@@ -117,5 +87,3 @@ vim.opt.softtabstop = 4    -- Number of spaces for <Tab> in insert mode (includi
 ```
 
 Note - the options shown above are the default options set in the aformentioned file.
-
----

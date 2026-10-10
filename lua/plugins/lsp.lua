@@ -1,26 +1,35 @@
 vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
-    -- main is the breaking V2 rewrite; v1 tags also get prebuilt binaries
+    "https://github.com/mason-org/mason.nvim",
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1") },
     "https://github.com/ribru17/blink-cmp-spell",
 })
 
--- server -> executable; only servers installed on this machine are
--- enabled (a missing binary would otherwise error for some servers)
-local servers = {
-    gopls            = "gopls",
-    golangci_lint_ls = "golangci-lint-langserver",
-    jsonls           = "vscode-json-language-server",
-    yamlls           = "yaml-language-server",
-    intelephense     = "intelephense",
-    perlnavigator    = "perlnavigator",
-    tsp_server       = "tsp-server",
-}
-for name, exe in pairs(servers) do
-    if vim.fn.executable(exe) == 1 then
-        vim.lsp.enable(name)
+-- Mason's bin directory is appended to the PATH, so a binary
+-- installed on the system takes precedence over Mason's copy
+require("mason").setup({ PATH = "append" })
+
+-- Enable all servers installed through Mason
+-- Servers installed another way can be enabled in local.lua
+local registry = require("mason-registry")
+local function set_enabled(pkg, enable)
+    local name = pkg.spec.neovim and pkg.spec.neovim.lspconfig
+    if name then
+        vim.lsp.enable(name, enable)
     end
 end
+
+for _, pkg in ipairs(registry.get_installed_packages()) do
+    set_enabled(pkg, true)
+end
+
+registry:on("package:install:success", vim.schedule_wrap(function(pkg)
+    set_enabled(pkg, true)
+end))
+
+registry:on("package:uninstall:success", vim.schedule_wrap(function(pkg)
+    set_enabled(pkg, false)
+end))
 
 require("blink.cmp").setup({
     keymap = {
@@ -48,9 +57,9 @@ require("blink.cmp").setup({
         providers = {
             -- buffer words show alongside LSP results, not only as a fallback
             lsp    = { name = "[LSP]", fallbacks = {} },
-            path   = { name = "[Path]" },
+            path   = { name = "[Pth]" },
             buffer = { name = "[Buf]" },
-            spell  = { name = "[Spell]", module = "blink-cmp-spell" },
+            spell  = { name = "[Spl]", module = "blink-cmp-spell" },
         },
     },
     cmdline = { enabled = false },
