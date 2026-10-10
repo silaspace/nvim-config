@@ -11,6 +11,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 vim.opt.spell = true
 vim.opt.spelllang = {"en_gb"}
+vim.opt.winborder = "rounded" -- border on floats such as LSP hover and diagnostics
+
+-- show diagnostics inline at the end of the line (off by default)
+vim.diagnostic.config({ virtual_text = true })
 
 -- SSH clipboard
 vim.g.clipboard = "osc52"

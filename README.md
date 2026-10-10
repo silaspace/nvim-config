@@ -53,7 +53,6 @@ To update plugins, run `:lua vim.pack.update()`, review the changes, then `:writ
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 - [oil.nvim](https://github.com/stevearc/oil.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [tiny-inline-diagnostic.nvim](https://github.com/rachartier/tiny-inline-diagnostic.nvim)
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 
 ---

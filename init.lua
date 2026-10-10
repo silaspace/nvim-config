@@ -19,7 +19,6 @@ require("plugins.oil")
 require("plugins.telescope")
 require("plugins.nvim-treesitter")
 require("plugins.lsp")
-require("plugins.tiny-inline-diagnostic")
 
 -- Machine-specific overrides (gitignored), see lua/config/local.example.lua
 if vim.uv.fs_stat(vim.fn.stdpath("config") .. "/lua/config/local.lua") then
