@@ -2,7 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function ()
         local telescope = require("telescope")
@@ -20,18 +19,10 @@ return {
                     additional_args = { "--hidden", "--glob", "!**/.git/*" },
                 },
             },
-            extensions = {
-                file_browser = {
-                    hidden = true,
-                },
-            },
         })
-
-        telescope.load_extension("file_browser")
 
         vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
         vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
         vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-        vim.keymap.set("n", "<leader>fe", ":Telescope file_browser<CR>")
     end
 }
