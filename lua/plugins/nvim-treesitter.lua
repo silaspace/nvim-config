@@ -1,9 +1,12 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    -- master is the branch that stays compatible with Neovim 0.11; main
+    -- requires 0.12/nightly and uses a different, incompatible API.
+    branch = "master",
     build = ":TSUpdate",
     lazy = false,
     config = function()
-        require("nvim-treesitter.config").setup({
+        require("nvim-treesitter.configs").setup({
             highlight = { enable = true },
             indent = { enable = true },
             auto_install = true,
@@ -14,9 +17,9 @@ return {
                 "lua",
                 "perl",
                 "php",
+                "typespec",
                 "yaml",
             },
         })
     end
 }
-

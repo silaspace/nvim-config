@@ -9,7 +9,6 @@ return {
 
         null_ls.setup({
             sources = {
-                null_ls.builtins.diagnostics.perlcritic,
                 null_ls.builtins.completion.spell,
             },
         })
