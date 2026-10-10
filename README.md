@@ -41,12 +41,6 @@ On launch, `lazy.nvim` will automatically install itself and the plugins defined
 
 ## 🔌 Plugins
 
-### [alpha-nvim](https://github.com/goolord/alpha-nvim)
-Configurable startup dashboard
-
-### [auto-session](https://github.com/rmagatti/auto-session)
-Automated session management of open buffers; useful for switching between projects/contexts
-
 ### [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 Turns open buffers into VSCode-style tabs 
 
@@ -83,8 +77,8 @@ AST-based syntax parsing
 ### [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 Adds icons to the UI; many plugins have this as a dependency
 
-### [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-Extension of telescope.nvim that adds file browsing
+### [oil.nvim](https://github.com/stevearc/oil.nvim)
+File explorer that lets you edit the filesystem like a normal buffer
 
 ### [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 Fuzzy finder used for file picking and live grep
