@@ -9,3 +9,8 @@ require("config.lazy")
 -- Global / non-plugin specific settings
 require("config.settings")
 
+-- Machine-specific overrides (gitignored), see lua/config/local.example.lua
+if vim.uv.fs_stat(vim.fn.stdpath("config") .. "/lua/config/local.lua") then
+    require("config.local")
+end
+

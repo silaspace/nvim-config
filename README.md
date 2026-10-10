@@ -1,15 +1,14 @@
 # nvim-config
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 ![Neovim](https://img.shields.io/badge/neovim-0.11%2B-green.svg)
-![License](https://img.shields.io/badge/license-Apache%202.0-orange.svg)
-![Plugin Manager](https://img.shields.io/badge/lazy.nvim-enabled-purple.svg)
+![License](https://img.shields.io/badge/license-MIT%202.0-orange.svg)
 
 A modern, modular Neovim configuration built with [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 Make sure the following dependencies are installed:
 
@@ -21,7 +20,7 @@ Make sure the following dependencies are installed:
 
 ---
 
-## 🚀 Installation
+## Installation
 
 Clone this repository into your Neovim config directory:
 
@@ -39,65 +38,49 @@ On launch, `lazy.nvim` will automatically install itself and the plugins defined
 
 ---
 
-## 🔌 Plugins
+## Plugins
 
-### [alpha-nvim](https://github.com/goolord/alpha-nvim)
-Configurable startup dashboard
-
-### [auto-session](https://github.com/rmagatti/auto-session)
-Automated session management of open buffers; useful for switching between projects/contexts
-
-### [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
-Turns open buffers into VSCode-style tabs 
-
-### [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-Provides git indicators in the margin
-
-### [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-Improves the statusline with iconography and colour
-
-### [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-Bridge between mason and nvim-lspconfig
-
-### [mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim)
-Extension to mason that enables management of linters and formatters
-
-### [mason.nvim](https://github.com/williamboman/mason.nvim)
-LSP installation and management
-
-### [none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)
-Configures linters and formatters
-
-### [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-Neovim completion engine; interfaces with LSPs, open buffers, spellcheckers etc.
-
-### [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-Configures Neovims built in Language Server Protocol (LSP)
-
-### [nvim-osc52](https://github.com/ojroques/nvim-osc52)
-Enables yanking (copying) over SSH using the OSC-52 protocol
-
-### [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-AST-based syntax parsing
-
-### [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
-Adds icons to the UI; many plugins have this as a dependency
-
-### [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-Extension of telescope.nvim that adds file browsing
-
-### [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-Fuzzy finder used for file picking and live grep
-
-### [tiny-inline-diagnostic.nvim](https://github.com/rachartier/tiny-inline-diagnostic.nvim)
-Provides inline diagnostics; interfaces with LSPs and linters
-
-### [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-Consistent theme for the UI
+- [blink.cmp](https://github.com/saghen/blink.cmp)
+- [blink-cmp-spell](https://github.com/ribru17/blink-cmp-spell)
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [nvim-osc52](https://github.com/ojroques/nvim-osc52)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [oil.nvim](https://github.com/stevearc/oil.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [tiny-inline-diagnostic.nvim](https://github.com/rachartier/tiny-inline-diagnostic.nvim)
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 
 ---
 
-## 🧩 Customisation
+## Language servers
+
+Individual language servers are not installed by default, but are defined in `lsp.lua` and enabled automatically when the executable is present on the `PATH`.
+
+For example -
+
+```bash
+# Go
+go install golang.org/x/tools/gopls@latest
+go install github.com/nametake/golangci-lint-langserver@latest
+
+# JSON, YAML, PHP, Perl
+npm install -g vscode-langservers-extracted yaml-language-server intelephense perlnavigator-server
+```
+
+---
+
+## Local config
+
+Settings that should only be applied locally (i.e. server paths, project include paths, extra servers) go in `lua/config/local.lua`.
+An example copy is provided as `lua/config/local.example.lua`.
+
+---
+
+## Customisation
 
 Additional plugins should be configured in the `lua/plugins` directory, with a single file equating to a single plugin specification.
 Each specfile takes on the following format -

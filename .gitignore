@@ -1,2 +1,5 @@
 # Ignore the lazy.nvim lock file
 lazy-lock.json
+
+# Ignore machine-specific overrides
+lua/config/local.lua
