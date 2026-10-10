@@ -1,10 +1,10 @@
 # nvim-config
 
 ![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
-![Neovim](https://img.shields.io/badge/neovim-0.11%2B-green.svg)
+![Neovim](https://img.shields.io/badge/neovim-0.12%2B-green.svg)
 ![License](https://img.shields.io/badge/license-MIT%202.0-orange.svg)
 
-A modern, modular Neovim configuration built with [lazy.nvim](https://github.com/folke/lazy.nvim)
+A modern, modular Neovim configuration built with the native [`vim.pack`](https://neovim.io/doc/user/pack.html#vim.pack) plugin manager
 
 ---
 
@@ -12,6 +12,7 @@ A modern, modular Neovim configuration built with [lazy.nvim](https://github.com
 
 Make sure the following dependencies are installed:
 
+* [`git`](https://git-scm.com) – plugin installation
 * A terminal with true colour (24-bit / 256 colour) support
 * [A Nerd Font](https://www.nerdfonts.com) - icon support
 * [`ripgrep`](https://github.com/BurntSushi/ripgrep) – fast searching
@@ -34,7 +35,9 @@ Then launch Neovim:
 nvim
 ```
 
-On launch, `lazy.nvim` will automatically install itself and the plugins defined in `plugins` directory
+On launch, `vim.pack` will automatically install the plugins defined in the `plugins` directory, at the revisions pinned in `nvim-pack-lock.json`
+
+To update plugins, run `:lua vim.pack.update()`, review the changes, then `:write` to apply them or `:quit` to discard them
 
 ---
 
@@ -46,7 +49,6 @@ On launch, `lazy.nvim` will automatically install itself and the plugins defined
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [nvim-osc52](https://github.com/ojroques/nvim-osc52)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 - [oil.nvim](https://github.com/stevearc/oil.nvim)
@@ -82,27 +84,26 @@ An example copy is provided as `lua/config/local.example.lua`.
 
 ## Customisation
 
-Additional plugins should be configured in the `lua/plugins` directory, with a single file equating to a single plugin specification.
-Each specfile takes on the following format -
+Additional plugins should be configured in the `lua/plugins` directory, with a single file per plugin.
+Each file takes on the following format -
 
 ```lua
-return {
-    "author/plugin.nvim"
-    dependencies = {
-        "author2/plugin-dependency1.nvim",
-        "author3/plugin-dependency2.nvim"
-    }
-    config = function ()
-        -- If you need to, require and setup the plugin
-        require("plugin").setup({
-            -- Plugin-specific options should go here 
-        })
+-- Install the plugin, listing any dependencies before it
+vim.pack.add({
+    "https://github.com/author2/plugin-dependency.nvim",
+    "https://github.com/author/plugin.nvim",
+})
 
-        -- Setup any keybindings for this plugin here
-        vim.keymap.set("n", "<leader>e", ":PluginCommand<CR>")
-    end
-}
+-- If you need to, require and setup the plugin
+require("plugin").setup({
+    -- Plugin-specific options should go here
+})
+
+-- Setup any keybindings for this plugin here
+vim.keymap.set("n", "<leader>e", ":PluginCommand<CR>")
 ```
+
+Then require the new file in `init.lua`. Files are loaded in the order listed there.
 
 Settings and keymaps outside of plugins should be configured in `lua/config/settings.lua`
 For example, indentation options -
