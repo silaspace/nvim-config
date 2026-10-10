@@ -1,25 +1,22 @@
-return {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    config = function()
-        -- Disable default inline diagnostics
-        vim.diagnostic.config({
-            virtual_text = false,
-        })
+vim.pack.add({
+    "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
+})
 
-        require("tiny-inline-diagnostic").setup({
-            preset = "modern",
+-- Disable default inline diagnostics
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
-            options = {
-                show_source = {
-                    enabled = true,
-                },
-            },
+require("tiny-inline-diagnostic").setup({
+    preset = "modern",
 
-            multilines = {
-                enabled = true,
-            },
-        })
-    end
-}
+    options = {
+        show_source = {
+            enabled = true,
+        },
+    },
 
+    multilines = {
+        enabled = true,
+    },
+})

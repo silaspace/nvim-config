@@ -1,3 +1,7 @@
+-- leader keys, set before any plugin keymaps are defined
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- editor options
 vim.opt.number = true
 vim.opt.relativenumber = false

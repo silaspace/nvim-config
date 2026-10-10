@@ -1,11 +1,9 @@
-return {
-    "folke/tokyonight.nvim",
-    config = function()
-        require("tokyonight").setup({
-            style = "night",
-        })
+vim.pack.add({
+    "https://github.com/folke/tokyonight.nvim",
+})
 
-        vim.cmd.colorscheme("tokyonight")
-    end
-}
+require("tokyonight").setup({
+    style = "night",
+})
 
+vim.cmd.colorscheme("tokyonight")
