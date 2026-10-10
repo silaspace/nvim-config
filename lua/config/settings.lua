@@ -2,12 +2,14 @@
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 vim.opt.spell = true
 vim.opt.spelllang = {"en_gb"}
+
+-- SSH clipboard
+vim.g.clipboard = "osc52"
 
 -- set indentation options
 vim.opt.tabstop = 4        -- Number of spaces in a <Tab>
