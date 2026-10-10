@@ -9,15 +9,13 @@ return {
         require("nvim-treesitter.configs").setup({
             highlight = { enable = true },
             indent = { enable = true },
+            -- parsers for any other language are installed on first use
             auto_install = true,
             ensure_installed = {
                 "bash",
                 "go",
                 "json",
                 "lua",
-                "perl",
-                "php",
-                "typespec",
                 "yaml",
             },
         })
