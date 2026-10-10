@@ -16,11 +16,11 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<BS>", ":bdelete<CR>")             -- close current buffer
-        vim.keymap.set("n", "=",    ":BufferLineCycleNext<CR>") -- next buffer
-        vim.keymap.set("n", "-",    ":BufferLineCyclePrev<CR>") -- previous buffer
-        vim.keymap.set("n", "+",    ":BufferLineMoveNext<CR>")  -- move buffer right
-        vim.keymap.set("n", "_",    ":BufferLineMovePrev<CR>")  -- move buffer left
+        vim.keymap.set("n", "q", ":bdelete<CR>")             -- close current buffer
+        vim.keymap.set("n", "=", ":BufferLineCycleNext<CR>") -- next buffer
+        vim.keymap.set("n", "-", ":BufferLineCyclePrev<CR>") -- previous buffer
+        vim.keymap.set("n", "+", ":BufferLineMoveNext<CR>")  -- move buffer right
+        vim.keymap.set("n", "_", ":BufferLineMovePrev<CR>")  -- move buffer left
     end
 }
 
