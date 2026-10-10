@@ -41,6 +41,12 @@ On launch, `lazy.nvim` will automatically install itself and the plugins defined
 
 ## 🔌 Plugins
 
+### [blink.cmp](https://github.com/saghen/blink.cmp)
+Completion engine; interfaces with LSPs, open buffers and file paths
+
+### [blink-cmp-spell](https://github.com/ribru17/blink-cmp-spell)
+Spelling suggestions source for blink.cmp
+
 ### [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 Turns open buffers into VSCode-style tabs 
 
@@ -49,21 +55,6 @@ Provides git indicators in the margin
 
 ### [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 Improves the statusline with iconography and colour
-
-### [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-Bridge between mason and nvim-lspconfig
-
-### [mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim)
-Extension to mason that enables management of linters and formatters
-
-### [mason.nvim](https://github.com/williamboman/mason.nvim)
-LSP installation and management
-
-### [none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)
-Configures linters and formatters
-
-### [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-Neovim completion engine; interfaces with LSPs, open buffers, spellcheckers etc.
 
 ### [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 Configures Neovims built in Language Server Protocol (LSP)
@@ -88,6 +79,31 @@ Provides inline diagnostics; interfaces with LSPs and linters
 
 ### [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 Consistent theme for the UI
+
+---
+
+## 🧠 Language servers
+
+Language servers are installed outside of Neovim, and each one in `lua/plugins/lsp.lua` is enabled automatically when its executable is on `PATH`.
+Install only the ones a machine needs -
+
+```bash
+# Go
+go install golang.org/x/tools/gopls@latest
+go install github.com/nametake/golangci-lint-langserver@latest
+
+# JSON, YAML, PHP, Perl
+npm install -g vscode-langservers-extracted yaml-language-server intelephense perlnavigator-server
+```
+
+To add a new server, add its [nvim-lspconfig name](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md) and executable to the `servers` table in `lua/plugins/lsp.lua`.
+
+---
+
+## 💻 Machine-specific config
+
+Settings that only apply to one machine (server paths, project include paths, extra servers) go in `lua/config/local.lua`, which is gitignored and loaded at the end of `init.lua` if it exists.
+Copy `lua/config/local.example.lua` to get started.
 
 ---
 
