@@ -10,7 +10,7 @@ require("config.settings")
 -- Each plugin file installs its plugin(s) with vim.pack and configures them
 -- Settings and keybindings relevant to a plugin should be defined inside its file
 -- Files are loaded in this order, so dependencies must come first
-require("plugins.tokyonight")
+require("plugins.catppuccin")
 require("plugins.nvim-web-devicons")
 require("plugins.bufferline")
 require("plugins.lualine")

@@ -3,5 +3,5 @@ vim.pack.add({
 })
 
 require("lualine").setup({
-    options = { theme = "tokyonight" }
+    options = { theme = "catppuccin-nvim" }
 })

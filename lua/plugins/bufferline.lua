@@ -5,8 +5,8 @@ vim.pack.add({
 })
 
 require("bufferline").setup({
+    highlights = require("catppuccin.special.bufferline").get_theme(),
     options = {
-        separator_style = "slant",
         diagnostics = "nvim_lsp",
         always_show_bufferline = true,
         show_buffer_close_icons = false,
